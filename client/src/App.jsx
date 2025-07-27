@@ -11,6 +11,7 @@ import ManageCars from './pages/owner/ManageCars'
 import AddCar from './pages/owner/AddCar'
 import Dashboard from './pages/owner/Dashboard'
 import Layout from './pages/owner/Layout'
+import Login from './components/Login'
 
 const App = () => {
 
@@ -18,6 +19,8 @@ const App = () => {
   const isOwnerPath = useLocation().pathname.startsWith('/owner')
   return (
     <>
+    { showLogin &&     <Login setShowLogin={setShowLogin}/>
+}
       {!isOwnerPath && <Navbar setShowLogin = {setShowLogin} />}
 
       <Routes>
