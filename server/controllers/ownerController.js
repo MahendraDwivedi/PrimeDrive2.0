@@ -1,6 +1,6 @@
 import User from "../model/User"
 
-
+//  change role to Owner
 export const changeRoleToOwner = async (req,res)=>{
     try {
         const {_id} = req.user
