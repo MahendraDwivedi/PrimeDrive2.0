@@ -1,19 +1,68 @@
 import React, { useEffect, useState } from 'react'
 import { assets, dummyCarData } from '../../assets/assets'
 import Title from '../../components/owner/Title'
+import { useAppContext } from '../../context/AppContext'
+import toast from 'react-hot-toast'
 
 const ManageCars = () => {
 
-  const [cars,setCars] = useState([])
+  const { isOwner, axios, currency } = useAppContext()
 
-  const fetchOwnerCars = async ()=>{
-    setCars(dummyCarData)
+  const [cars, setCars] = useState([])
+
+  const fetchOwnerCars = async () => {
+    try {
+      const { data } = await axios.get('/api/owner/cars')
+
+      if (data.success) {
+        setCars(data.cars)
+      }
+      else {
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
   }
-  useEffect(()=>{
-    fetchOwnerCars()
-  },[])
 
-  const currency = import.meta.env.VITE_CURRENCY
+  const toggleAvailability = async (carId) => {
+    try {
+      const { data } = await axios.post('/api/owner/toggle-car', { carId })
+      if (data.success) {
+        toast.success(data.message)
+        fetchOwnerCars()
+      }
+      else {
+        toast.error(error.message)
+      }
+    }
+    catch (error) {
+      toast.error(error.message)
+    }
+  }
+
+
+  const deleteCar = async (carId) => {
+    try {
+      const confirm = window.confirm('Do u want to delete the car?')
+      if(!confirm) return null;
+      const { data } = await axios.post('/api/owner/delete-car', { carId })
+      if (data.success) {
+        toast.success(data.message)
+        fetchOwnerCars()
+      }
+      else {
+        toast.error(error.message)
+      }
+    }
+    catch (error) {
+      toast.error(error.message)
+    }
+  }
+  useEffect(() => {
+    isOwner && fetchOwnerCars()
+  }, [isOwner])
+
   return (
     <div className='px-4 pt-10 md:px-10 w-full'>
       <Title title="Manage Cars" subTitle="View all listed cars, update their details, or remove them from the booking platform." />
@@ -30,7 +79,7 @@ const ManageCars = () => {
             </tr>
           </thead>
           <tbody>
-            {cars.map((car,index)=>(
+            {cars.map((car, index) => (
               <tr key={index} className='border-t border-borderColor'>
                 <td className='p-3 flex items-center gap-3'>
                   <img src={car.image} alt="" className='h-12 w-12 aspect-square rounded-md object-cover' />
@@ -42,14 +91,14 @@ const ManageCars = () => {
 
                 <td className='p-3 max-md:hidden'>{car.category}</td>
                 <td className='p-3'>{currency} {car.pricePerDay}</td>
-                
+
                 <td className='p-3 max-md:hidden'>
-                  <span className={`px-3 py-1 rounded-full text-xs ${car.isAvaliable? "bg-green-100 text-green-500":"bg-red-100 text-red-500"}`}>{car.isAvaliable ? "Available":"Unavailable"}</span>
+                  <span className={`px-3 py-1 rounded-full text-xs ${car.isAvailable ? "bg-green-100 text-green-500" : "bg-red-100 text-red-500"}`}>{car.isAvailable ? "Available" : "Unavailable"}</span>
                 </td>
 
                 <td className='flex items-center p-3'>
-                  <img src={car.isAvaliable?assets.eye_close_icon:assets.eye_icon} alt="" className='cursor-pointer' />
-                  <img src={assets.delete_icon} alt="" className='cursor-pointer' />
+                  <img onClick={()=> toggleAvailability(car._id)} src={car.isAvailable ? assets.eye_close_icon : assets.eye_icon} alt="" className='cursor-pointer' />
+                  <img onClick={()=>deleteCar(car._id)} src={assets.delete_icon} alt="" className='cursor-pointer' />
                 </td>
               </tr>
             ))}

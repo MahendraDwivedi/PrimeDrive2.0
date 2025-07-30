@@ -1,4 +1,5 @@
 import imagekit from "../configs/imageKit.js"
+import Booking from "../model/Booking.js"
 import Car from "../model/Car.js"
 import User from "../model/User.js"
 import fs from 'fs'
@@ -106,7 +107,7 @@ export const deleteCar = async (req,res)=>{
 }
 
 // API to get dashboard Data
-export const getDashboardData = async ()=>{
+export const getDashboardData = async (req,res)=>{
     try {
         const {_id,role} = req.user;
 
