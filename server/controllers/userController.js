@@ -17,11 +17,12 @@ export const registerUser = async (req, res) => {
         if (!validator.isEmail(email)) {
             return res.json({ success: false, message: "Invalid email format" });
         }
+            const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
 
         if (name?.length < 3) {
             return res.json({ success: false, message: "Name length is not less than 3" })
         }
-        if (!validator.isAlpha(name)) return res.json({ success: false, message: "Name should contains only alphabets." })
+        if(!nameRegex.test(name.trim())) return res.json({ success: false, message: "Name should contains only single space and alphabets" })
 
         if (!name || !email || !password || password?.length < 8) {
             return res.json({ success: false, message: "Fill all the fields with necessary requirements" })
