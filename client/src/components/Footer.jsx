@@ -4,7 +4,7 @@ import { assets } from '../assets/assets';
 const Footer = () => {
     return (
 
-        <footer className="flex flex-col bg-blue-700 items-center justify-around w-full mt-30 py-16 text-sm text-black">
+        <footer className="flex flex-col bg-blue-700 items-center justify-around w-full py-16 text-sm text-black">
             <div className="flex flex-wrap justify-between items-start gap-8 pb-6 border-borderColor">
                 <a href="#" className="font-medium text-white-500 hover:text-black transition-all">
                     Home
@@ -40,7 +40,7 @@ const Footer = () => {
 
                 </a>
             </div>
-            <p className="mt-8 text-center">Copyright © 2025 <a href="https://prebuiltui.com">CarGo</a>. All rights reservered.</p>
+            <p className="mt-8 text-center">Copyright © 2025 <a href="/">PrimeDrive</a>. All rights reservered.</p>
         </footer>
     );
 }

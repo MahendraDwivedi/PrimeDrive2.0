@@ -1,15 +1,18 @@
 import React from 'react'
 import {motion} from 'motion/react'
+import { useAppContext } from '../context/AppContext'
 
 const Newsletter = () => {
+    const {isDark} = useAppContext()
    return (
-        <motion.div 
+        <div className={` ${isDark ? 'bg-dark text-light':'bg-light text-dark'}`}>
+            <motion.div 
         initial={{opacity:0 , y:30}}
         whileInView={{opacity:1 , y:0}}
         transition={{duration:0.6,ease:'easeOut'}}
         viewport={{once:true,amount:0.3}}
 
-        className="flex flex-col items-center justify-center text-center space-y-2 max-md:px-4 my-10 mb-40">
+        className={`flex flex-col items-center justify-center text-center space-y-6 pb-30 max-md:px-4`}>
             <motion.h1
             initial={{opacity:0,y:20}}
             whileInView={{opacity:1,y:0}}
@@ -39,6 +42,7 @@ const Newsletter = () => {
                 </button>
             </motion.form>
         </motion.div>
+        </div>
     )
 }
 

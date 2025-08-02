@@ -21,13 +21,13 @@ export const AppProvider = ({ children }) => {
 
     const [cars, setCars] = useState([])
 
+    const [isDark , setIsDark] = useState(true);
+
     //Function to check if user is logged in'
     const fetchUser = async () => {
         try {            
             const { data } = await axios.get('/api/user/data')
-            
-        console.log(token);
-        
+                    
             if (data.success) {
                 setUser(data.user)
                 setIsOwner(data.user.role === 'owner')
@@ -88,7 +88,7 @@ export const AppProvider = ({ children }) => {
         navigate, currency, axios, user, setUser,
         token, setToken, isOwner, setIsOwner, fetchUser, showLogin,
         setShowLogin, logout, fetchCars, cars, setCars,
-        pickupDate, setPickupDate, returnDate, setReturnDate
+        pickupDate, setPickupDate, returnDate, setReturnDate,isDark,setIsDark
     }
 
     return (

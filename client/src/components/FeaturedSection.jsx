@@ -8,18 +8,18 @@ import { delay, motion, scale } from 'motion/react'
 
 const FeaturedSection = () => {
     const navigate = useNavigate()
-    const { cars } = useAppContext()
+    const { cars ,isDark } = useAppContext()
     return (
         <motion.div
             initial={{ y: 40, opacity: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className='flex flex-col items-center py-24 px-6 md:px-16 lg:px-24 xl:px-32'>
+            className={`flex flex-col items-center py-34 px-6 md:px-16 lg:px-24 xl:px-32  ${isDark ? 'bg-dark text-light':'bg-light text-dark'}`}>
             <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.5 }}>
-                <Title title='Featured Vehicles' subTitle='Explore our selection of premium vehicles available for your next adventure.' />
+                <Title title='Prime Selections' subTitle='Discover our range of premium vehicles ready for your next journey.' />
             </motion.div>
 
             <motion.div
