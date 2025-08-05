@@ -6,7 +6,7 @@ const Hero = () => {
 
     const [pickupLocation, setPickupLocation] = useState('')
 
-    const { pickupDate, setPickupDate, returnDate, setReturnDate, navigate, isDark, setIsDark } = useAppContext()
+    const { pickupDate, setPickupDate, returnDate, setReturnDate, navigate, isDark, setIsDark, user } = useAppContext()
 
     const handleSearch = (e) => {
         e.preventDefault()
@@ -20,16 +20,20 @@ const Hero = () => {
             className={`flex flex-col items-center justify-center p-20 gap-14 ${isDark ? 'bg-dark text-light' : 'bg-light text-dark'} text-center`}>
 
             <div className="max-w-4xl flex flex-col text-center gap-10">
+                <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent italic">
+                    {user === null ? "" : `Hii ${user.name}`}
+                </h1>
+
                 <motion.h1
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                   className="text-4xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent italic"> PrimeDrive – Your Journey Starts Here</motion.h1>
+                    className="text-4xl font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Welcome to <strong className='italic'>PrimeDrive</strong> – Your Journey Starts Here</motion.h1>
                 <p className="text-lg md:text-xl text- dark:text-gray-400 ">
                     <span className="block font-semibold text-indigo-600 dark:text-indigo-400 mb-2">
                         Reliable. Affordable. Effortless.
                     </span>
-                    Welcome to <strong>PrimeDrive</strong>, your ultimate destination for smart and seamless car rentals.
+                    Your ultimate destination for smart and seamless car rentals.
                     Whether you're planning a weekend getaway, a business trip, or just need a ride around town —
                     we’ve got the perfect vehicle for every journey.
                 </p>
