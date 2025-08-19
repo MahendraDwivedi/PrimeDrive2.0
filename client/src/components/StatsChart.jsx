@@ -11,6 +11,7 @@ const CardContent = ({ children, className }) => (
   <div className={`p-4 ${className}`}>{children}</div>
 );
 
+// showing chart
 const StatsChart = () => {
   const { isOwner, axios ,isDark } = useAppContext();
   const [stats, setStats] = useState([]);
@@ -33,7 +34,7 @@ const StatsChart = () => {
   }, [isOwner]);
 
   return (
-    <div className={`w-full p-30 ${isDark ? 'bg-dark text-light' : 'bg-light text-dark'}`}>
+    <div className={`w-full p-30 ${isDark ? 'bg-dark italic bold' : 'bg-light text-dark'}`}>
       <Card className="shadow-lg rounded-2xl">
         <CardContent className="p-6">
           <h2 className="text-xl font-semibold mb-4">
