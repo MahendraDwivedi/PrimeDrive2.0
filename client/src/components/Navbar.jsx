@@ -103,7 +103,7 @@ import { motion } from 'framer-motion'
 import { Sun, Moon } from 'lucide-react';
 
 const Navbar = () => {
-  const { setShowLogin, user, logout, isOwner, axios, setIsOwner, isDark, setIsDark } = useAppContext()
+  const { setShowLogin, user, logout, isOwner, axios, setIsOwner, isDark, setIsDark ,changeRole } = useAppContext()
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -120,19 +120,7 @@ const Navbar = () => {
     }
   }
 
-  const changeRole = async () => {
-    try {
-      const { data } = await axios.post('/api/owner/change-role')
-      if (data.success) {
-        setIsOwner(true)
-        toast.success(data.message)
-      } else {
-        toast.error(data.message)
-      }
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
+  
 
   return (
     <motion.div
@@ -174,7 +162,7 @@ const Navbar = () => {
 
         <div className='flex max-sm:flex-col items-start sm:items-center gap-6'>
           <motion.button whileHover={{ scale: 1.08 }} onClick={() => isOwner ? navigate('/owner') : changeRole()} className='cursor-pointer'>
-            {isOwner ? 'Dashboard' : 'List cars'}
+            {isOwner ? 'Dashboard' : 'List Vehicles'}
           </motion.button>
 
           <button onClick={() => { user ? logout() : setShowLogin(true) }} className='cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition-all text-white rounded-lg'>

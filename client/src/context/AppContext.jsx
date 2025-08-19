@@ -40,19 +40,37 @@ export const AppProvider = ({ children }) => {
         }
     }
 
+    // change role 
+    const changeRole = async () => {
+        try {
+          const { data } = await axios.post('/api/owner/change-role')
+          if (data.success) {
+            setIsOwner(true)
+            toast.success(data.message)
+          } else {
+            toast.error(data.message)
+          }
+        } catch (error) {
+          console.log(error.message)
+        }
+      }
+
     // function to fetch all cars from the server
     const fetchCars = async () => {
+        
         const currentToken = localStorage.getItem("token");
         if (!currentToken) return;
 
-        try {
-            const { data } = await axios.get('/api/user/cars', {
+        try {   
+            const { data } = await axios.get('/api/user/vehicles', {
                 headers: {
                     Authorization: `Bearer ${currentToken}`
                 }
             });
 
             data.success ? setCars(data.cars) : toast.error(data.message);
+            console.log(cars);
+            
         } catch (error) {
             toast.error(error.message);
         }
@@ -71,7 +89,8 @@ export const AppProvider = ({ children }) => {
 
     //useEffect to retrive the token form localStorage
     useEffect(() => {
-        const token = localStorage.getItem('token')        
+        const token = localStorage.getItem('token') 
+               
         setToken(token)
         fetchCars()
     }, [])
@@ -88,7 +107,7 @@ export const AppProvider = ({ children }) => {
         navigate, currency, axios, user, setUser,
         token, setToken, isOwner, setIsOwner, fetchUser, showLogin,
         setShowLogin, logout, fetchCars, cars, setCars,
-        pickupDate, setPickupDate, returnDate, setReturnDate,isDark,setIsDark
+        pickupDate, setPickupDate, returnDate, setReturnDate,isDark,setIsDark , changeRole
     }
 
     return (

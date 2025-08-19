@@ -14,6 +14,7 @@ import Layout from './pages/owner/Layout'
 import Login from './components/Login'
 import {Toaster} from 'react-hot-toast'
 import { useAppContext } from './context/AppContext'
+import DetailsUserBooked from './pages/owner/DetailsUserBooked'
 
 const App = () => {
 
@@ -29,13 +30,15 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/car-details/:id' element={<CarDetails/>}/>
-        <Route path='/cars' element={<Cars/>}/>
+        <Route path='/vehicles' element={<Cars/>}/>
         <Route path='/my-bookings' element={<MyBookings/>}/>
         <Route path='/owner' element={<Layout/>}>
             <Route index element={<Dashboard/>}/>
-            <Route path='add-car' element={<AddCar/>}/>
-            <Route path='manage-cars' element={<ManageCars/>}/>
+            <Route path='add-vehicle' element={<AddCar/>}/>
+            <Route path='manage-vehicle' element={<ManageCars/>}/>
             <Route path='manage-bookings' element={<ManageBookings/>}/>
+            <Route path='clientDetails' element={<DetailsUserBooked/>}/>
+
         </Route>
       </Routes>
       {!isOwnerPath && <Footer/>}

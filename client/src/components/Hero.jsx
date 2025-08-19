@@ -33,7 +33,7 @@ const Hero = () => {
                     <span className="block font-semibold text-indigo-600 dark:text-indigo-400 mb-2">
                         Reliable. Affordable. Effortless.
                     </span>
-                    Your ultimate destination for smart and seamless car rentals.
+                    Your ultimate destination for smart and seamless vehicle rentals.
                     Whether you're planning a weekend getaway, a business trip, or just need a ride around town —
                     we’ve got the perfect vehicle for every journey.
                 </p>
@@ -44,8 +44,8 @@ const Hero = () => {
                 animate={{ scale: 1, y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
 
-                onSubmit={handleSearch} className='flex flex-col md:flex-row items-start md:items-center justify-between p-6 rounded-full w-full max-w-80 md:max-w-200 bg-white shadow-[0px_8px_20px_rgba(0,0,0,0.1)]'>
-                <div className='flex flex-col md:flex-row items-start md:items-center gap-10 min-md:ml-8 text-gray-900'>
+                onSubmit={handleSearch} className='flex flex-col md:flex-row items-start md:items-center justify-between p-6 rounded-full w-full max-w-80 md:max-w-200 bg-gradient-to-r from-indigo-800 via-purple-800 to-pink-800 shadow-[0px_8px_20px_rgba(0,0,0,1)]'>
+                <div className='flex flex-col md:flex-row items-start md:items-center gap-10 min-md:ml-8 text-gray-1000'>
                     <div className='flex flex-col items-start gap-2 text-gray-00'>
                         <select required value={pickupLocation} onChange={(e) => setPickupLocation(e.target.value)}>
                             <option value="">PickUp Location</option>

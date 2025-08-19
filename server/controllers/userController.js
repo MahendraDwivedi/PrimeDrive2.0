@@ -74,6 +74,7 @@ export const getUserData = async (req, res) => {
     }
 }
 
+    
 //get all cars for the frontend
 export const getCars = async (req, res) => {
     try {

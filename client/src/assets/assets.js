@@ -109,15 +109,17 @@ export const assets = {
 
 export const menuLinks = [
     { name: "Home", path: "/" },
-    { name: "Cars", path: "/cars" },
+    { name: "Vehicles", path: "/vehicles" },
     { name: "My Rentals", path: "/my-bookings" },
 ]
 
 export const ownerMenuLinks = [
     { name: "Dashboard", path: "/owner", icon: dashboardIcon, coloredIcon: dashboardIconColored },
-    { name: "Add car", path: "/owner/add-car", icon: addIcon, coloredIcon: addIconColored },
-    { name: "Manage Cars", path: "/owner/manage-cars", icon: carIcon, coloredIcon: carIconColored },
+    { name: "Add Vehicles", path: "/owner/add-vehicle", icon: addIcon, coloredIcon: addIconColored },
+    { name: "Manage Vehicles", path: "/owner/manage-vehicle", icon: carIcon, coloredIcon: carIconColored },
     { name: "Manage Bookings", path: "/owner/manage-bookings", icon: listIcon, coloredIcon: listIconColored },
+        { name: "Client Details", path: "/owner/clientDetails", icon: listIcon, coloredIcon: listIconColored },
+
 ]
 
 export const dummyUserData = {

@@ -99,29 +99,31 @@ const CarDetails = () => {
             </div>
 
             {/* features  */}
-            <div>
-              <h1 className='text-xl font-medium mb-3'>Features</h1>
-              <ul className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
-                {
-                  ["360 Camera", "Bluetooth", "GPS", "Heated Seats", "Rear View Mirror"].map((item) => (
+            {/* features  */}
+            {car.features && car.features.length > 0 && (
+              <div>
+                <h1 className='text-xl font-medium mb-3'>Features</h1>
+                <ul className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
+                  {car.features.map((item) => (
                     <li key={item} className='flex items-center text-gray-500'>
                       <img src={assets.check_icon} alt="" className='h-4 mr-2' />
                       {item}
                     </li>
-                  ))
-                }
-              </ul>
-            </div>
+                  ))}
+                </ul>
+              </div>
+            )}
+
           </motion.div>
 
         </motion.div>
 
         {/* right: Booking form */}
         <motion.form
-         initial={{opacity:0,y:30}}
-        animate={{opacity:1,y:0}}
-        transition={{delay:0.3,duration:0.6}} 
-        onSubmit={handleSubmit} action="" className='shadow-lg h-max sticky top-18 rounded-xl p-6 space-y-6 text-gray-500'>
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          onSubmit={handleSubmit} action="" className='shadow-lg h-max sticky top-18 rounded-xl p-6 space-y-6 text-gray-500'>
           <p className='flex items-center justify-between text-2xl text-gray-800 font-semibold'>{currency}{car.pricePerDay} <span className='text-base text-gray-400 font-normal'>per day</span></p>
           <hr className='border-borderColor my-6' />
 

@@ -54,8 +54,12 @@ export const createBooking = async (req, res) => {
         //calculate price based on pickup date and return date
         const picked = new Date(pickupDate)
         const returned = new Date(returnDate)
-        const noOfDays = Math.ceil((returned - picked) / (1000 * 60 * 60 * 24))
-        const price = carData.pricePerDay * noOfDays
+        var noOfDays = Math.ceil((returned - picked) / (1000 * 60 * 60 * 24))
+        if (picked.getDate() === returned.getDate()) noOfDays = 1;
+        
+        
+
+        const price = carData.pricePerDay * noOfDays;
 
         await Booking.create({ car, owner: carData.owner, user: _id, pickupDate, returnDate, price })
 
@@ -99,7 +103,7 @@ export const getOwnerBookings = async (req, res) => {
 //     try {
 //         const { _id } = req.user;
 //         const { bookingId, status } = req.body;
-        
+
 //         const booking = await Booking.findById(bookingId)
 //         if (booking.owner.toString() !== _id.toString()) return res.json({ success: false, message: "Unauthorized" })
 
@@ -113,7 +117,7 @@ export const getOwnerBookings = async (req, res) => {
 //     }
 // }
 
-export const changeBookingStatus = async (req,res) => {
+export const changeBookingStatus = async (req, res) => {
     try {
         const { _id } = req.user;
         const { bookingId, status } = req.body;
@@ -132,7 +136,7 @@ export const changeBookingStatus = async (req,res) => {
 
         booking.status = status;
         await booking.save();
-        res.json({ success: true, message:"Status Updated" });
+        res.json({ success: true, message: "Status Updated" });
 
     } catch (error) {
         console.log(error.message);
