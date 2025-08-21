@@ -11,7 +11,8 @@ const CardContent = ({ children, className }) => (
   <div className={`p-4 ${className}`}>{children}</div>
 );
 
-// showing chart
+// showing chart.
+
 const StatsChart = () => {
   const { isOwner, axios ,isDark } = useAppContext();
   const [stats, setStats] = useState([]);

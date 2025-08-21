@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { assets, cityList } from '../assets/assets'
+    import { assets, cityList } from '../assets/assets'
 import { useAppContext } from '../context/AppContext'
 import { motion } from 'motion/react'
 const Hero = () => {
@@ -10,7 +10,7 @@ const Hero = () => {
 
     const handleSearch = (e) => {
         e.preventDefault()
-        navigate('/cars?pickupLocation=' + pickupLocation + '&pickupDate=' + pickupDate + '&returnDate=' + returnDate)
+        navigate('/vehicles?pickupLocation=' + pickupLocation + '&pickupDate=' + pickupDate + '&returnDate=' + returnDate)
     }
     return (
         <motion.div
@@ -46,22 +46,22 @@ const Hero = () => {
 
                 onSubmit={handleSearch} className='flex flex-col md:flex-row items-start md:items-center justify-between p-6 rounded-full w-full max-w-80 md:max-w-200 bg-gradient-to-r from-indigo-800 via-purple-800 to-pink-800 shadow-[0px_8px_20px_rgba(0,0,0,1)]'>
                 <div className='flex flex-col md:flex-row items-start md:items-center gap-10 min-md:ml-8 text-gray-1000'>
-                    <div className='flex flex-col items-start gap-2 text-gray-00'>
+                    <div className='flex flex-col items-start gap-2 text-gray-900'>
                         <select required value={pickupLocation} onChange={(e) => setPickupLocation(e.target.value)}>
                             <option value="">PickUp Location</option>
                             {
                                 cityList.map((city) => <option key={city} value={city}>{city}</option>)
                             }
                         </select>
-                        <p className='px-1 text-sm text-gray-500'>{pickupLocation ? pickupLocation : 'Please select location'}</p>
+                        <p className='px-1 text-sm'>{pickupLocation ? pickupLocation : 'Please select location'}</p>
                     </div>
 
-                    <div className='flex flex-col items-start gap-2'>
+                    <div className='flex flex-col items-start gap-2  text-gray-900 '>
                         <label htmlFor="pickup-date">Pick-up Date</label>
                         <input value={pickupDate} onChange={e => setPickupDate(e.target.value)} type="date" id="pickup-date" min={new Date().toISOString().split('T')[0]} className='text-sm text-gray-500' required />
                     </div>
 
-                    <div className='flex flex-col items-start gap-2'>
+                    <div className='flex flex-col items-start gap-2 text-gray-900'>
                         <label htmlFor="return-date">Return Date</label>
                         <input value={returnDate} onChange={e => setReturnDate(e.target.value)} type="date" id="return-date" className='text-sm text-gray-500' required />
                     </div>

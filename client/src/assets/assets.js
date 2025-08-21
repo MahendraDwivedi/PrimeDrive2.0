@@ -41,26 +41,52 @@ import car_image2 from "./car_image2.png"
 import car_image3 from "./car_image3.png"
 import car_image4 from "./car_image4.png"
 
-export const cityList = [
-  // US Cities
-  "New York",
-  "Los Angeles",
-  "Houston",
-  "Chicago",
+// export const cityList = [
+//   // US Cities
+//   "New York",
+//   "Los Angeles",
+//   "Houston",
+//   "Chicago",
 
-  // Indian Cities
-  "Mumbai",
-  "Delhi",
-  "Bangalore",
-  "Hyderabad",
-  "Kolkata",
-  "Lucknow",
-  "Chennai",
-  "Pune",
-  "Ahmedabad",
-  "Jaipur",
-  "Goa"
-];
+//   // Indian Cities
+//   "Mumbai",
+//   "Delhi",
+//   "Bangalore",
+//   "Hyderabad",
+//   "Kolkata",
+//   "Lucknow",
+//   "Chennai",
+//   "Pune",
+//   "Ahmedabad",
+//   "Jaipur",
+//   "Goa"
+// ];
+
+export const cityList = [
+  "Agartala", "Agatti", "Agra", "Ahmedabad", "Aizawl", "Ajmer", "Alappuzha", "Ambala",
+  "Amritsar", "Asansol", "Aurangabad", "Bengalore", "Belagavi", "Bhagalpur", "Bhavnagar",
+  "Bhilai", "Bhopal", "Bhubaneswar", "Bikaner", "Bilaspur", "Bishnupur", "Bokaro",
+  "Chamarajanagar", "Champhai", "Chandigarh", "Chennai", "Cherrapunjee", "Churachandpur",
+  "Coimbatore", "Connaught Place", "Cuttack", "Darbhanga", "Darjeeling", "Daman", "Dehradun",
+  "Delhi", "Dharamshala", "Dharmanagar", "Dimapur", "Diu", "Durg", "Durgapur", "Dwarka",
+  "Erode", "Faridabad", "Gangtok", "Gaya", "Ghaziabad", "Gorakhpur", "Gulmarg", "Guntur","Gurugram",
+  "Guwahati", "Hisar", "Hubli", "Howrah", "Hyderabad", "Imphal", "Indore", "Itanagar",
+  "Jabalpur", "Jaipur", "Jalandhar", "Jammu", "Jamnagar", "Jamshedpur", "Jhansi", "Jodhpur",
+  "Jorhat", "Kailashahar", "Kanchipuram", "Kanpur", "Karaikal", "Karol Bagh", "Kargil",
+  "Kavaratti", "Kochi", "Kodaikanal", "Kohima", "Kolkata", "Kolhapur", "Kollam", "Korba",
+  "Kota", " Kozhikode", "Kullu", "Kurnool", "Kurukshetra", "Lachung", "Leh", "Lucknow",
+  "Ludhiana", "Lunglei", "Madurai", "Mahabalipuram", "Mahe", "Mandi", "Mangalore",
+  "Manali", "Margao", "Mathura", "Minicoy", "Mount Abu","Mumbai", "Muzaffarpur", "Mysuru", "Nainital",
+  "Nagpur", "Naharlagun", "Nashik", "Nellore", "New Delhi", "Nizamabad", "Noida", "Panaji",
+  "Panipat", "Pasighat", "Patiala", "Patna", "Pelling", "Ponda", "Port Blair", "Prayagraj",
+  "Puducherry", "Puri", "Pune", "Raipur", "Rajahmundry", "Rajkot", "Ranchi", "Rishikesh",
+  "Rourkela", "Salem", "Saket", "Sambalpur", "Serchhip", "Shillong", "Shimla", "Silchar",
+  "Siliguri", "Silvassa", "Siliguri", "Srinagar", "Srikakulam", "Surat", "Tawang", "Tezpur",
+  "Thane", "Thiruvananthapuram", "Thrissur", "Thoubal", "Tiruchirappalli", "Tirupati",
+  "Tura", "Udaipur", "Udaipur (Tripura)", "Ujjain", "Varanasi", "Vasco da Gama", "Vijayawada",
+  "Visakhapatnam", "Warangal", "Wokha", "Yanam", "Ziro"
+].sort();
+
 
 export const assets = {
     logo,

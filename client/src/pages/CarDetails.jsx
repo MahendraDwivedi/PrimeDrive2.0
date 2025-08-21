@@ -114,6 +114,11 @@ const CarDetails = () => {
               </div>
             )}
 
+            <div className='mb-'>
+              <h1 className='text-xl font-medium mb-3'>Location</h1>
+              <p className='text-gray-500'>{car.location}</p>
+            </div>
+
           </motion.div>
 
         </motion.div>
