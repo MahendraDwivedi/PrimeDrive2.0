@@ -67,17 +67,30 @@ import { motion } from 'motion/react'
 
 const FeaturedSection = () => {
     const navigate = useNavigate()
-    const { cars: vehicles, isDark } = useAppContext()
+
+    const { cars: vehicles, isDark ,user} = useAppContext()
 
     const [vehicleType, setVehicleType] = useState('')
     const [filteredVehicles, setFilteredVehicles] = useState([])
+      const [showPopup, setShowPopup] = useState(false)
+    
+    const handleMenuClick = (e) => {
+    if (!user) {
+        e.preventDefault()
+      setShowPopup(true)
+      setTimeout(() => setShowPopup(false), 3000)
+     } else {
+       navigate('/vehicles')
+       scrollTo(0, 0)
+     }
+    }
 
     useEffect(() => {
         if (vehicleType === '') {
             setFilteredVehicles(vehicles.slice(0, 6))
         } else {
             setFilteredVehicles(
-                vehicles.filter(v => v.vehicleType.toLowerCase() === vehicleType.toLowerCase()).slice(0, 6)
+            vehicles.filter(v => v.vehicleType.toLowerCase() === vehicleType.toLowerCase()).slice(0, 6)
             )
         }
     }, [vehicleType, vehicles])
@@ -90,6 +103,7 @@ const FeaturedSection = () => {
             className={`flex flex-col items-center py-34 px-6 md:px-16 lg:px-24 xl:px-32  
                 ${isDark ? 'bg-dark text-light' : 'bg-light text-dark'}`}
         >
+
             {/* Title */}
             <motion.div
                 initial={{ y: 20, opacity: 0 }}
@@ -133,19 +147,29 @@ const FeaturedSection = () => {
                 }
             </motion.div>
 
-            {/* Button */}
+
+            
             <motion.button
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.6 }}
-                onClick={() => {
-                    navigate('/cars')
-                    scrollTo(0, 0)
-                }}
+
+                onClick={(e)=>handleMenuClick(e)}
                 className='flex items-center justify-center gap-2 px-6 py-2 border border-borderColor hover:bg-gray-50 rounded-md mt-18 cursor-pointer'
             >
                 Explore all vehicles <img src={assets.arrow_icon} alt="arrow" />
             </motion.button>
+  {/* Popup */}
+                    {showPopup && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        className="  mt-10 mr-4 bg-red-500 text-white px-20 py-10 rounded shadow-md z-50"
+                      >
+                        Please log in to continue.
+                      </motion.div>
+                    )}
         </motion.div>
     )
 }

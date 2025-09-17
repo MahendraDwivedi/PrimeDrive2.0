@@ -58,15 +58,17 @@ export const AppProvider = ({ children }) => {
     // function to fetch all cars from the server
     const fetchCars = async () => {
         
-        const currentToken = localStorage.getItem("token");
-        if (!currentToken) return;
+        // const currentToken = localStorage.getItem("token");
+        // if (!currentToken) return;
 
         try {   
-            const { data } = await axios.get('/api/user/vehicles', {
-                headers: {
-                    Authorization: `Bearer ${currentToken}`
-                }
-            });
+            const { data } = await axios.get('/api/user/vehicles'
+            //     , {
+            //     headers: {
+            //         Authorization: `Bearer ${currentToken}`
+            //     }
+            // }
+        );
 
             data.success ? setCars(data.cars) : toast.error(data.message);
             console.log(cars);
@@ -97,10 +99,12 @@ export const AppProvider = ({ children }) => {
 
     //useEffect to fetch user data when token us available
     useEffect(() => {
+
         if (token) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-            fetchUser()
         }
+                            fetchUser()
+
     }, [token])
 
     const value = {
